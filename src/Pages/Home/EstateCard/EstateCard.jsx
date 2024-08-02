@@ -1,7 +1,7 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
-
+import PropTypes from "prop-types";
 const EstateCard = ({ estate }) => {
-  const { id, estate_title, location, price, status, image } = estate;
+  const { estate_title, location, price, status, image } = estate;
 
   return (
     <>
@@ -38,5 +38,14 @@ const EstateCard = ({ estate }) => {
     </>
   );
 };
-
+EstateCard.propTypes = {
+  estate: PropTypes.shape({
+    id: PropTypes.number.isRequired, // Assuming id is a string; change to PropTypes.number if it's a number
+    estate_title: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired, // Adjust according to your data type
+    status: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
 export default EstateCard;

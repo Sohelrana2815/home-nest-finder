@@ -36,7 +36,7 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Home Nest Finder</a>
+          <a className="btn btn-ghost text-3xl font-outfit">Home Nest Finder</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
