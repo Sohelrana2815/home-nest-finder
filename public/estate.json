@@ -1,0 +1,133 @@
+[
+  {
+    "id": 1,
+    "estate_title": "Luxurious Family Home",
+    "segment_name": "Single-Family Home",
+    "description": "A spacious and modern family home with an open floor plan, large backyard, and beautiful finishes.",
+    "price": "$500,000",
+    "status": "sale",
+    "area": "2500 sq ft",
+    "location": "123 Maple Street, Springfield",
+    "facilities": [
+      "Living Room",
+      "Swimming Pool",
+      "Kitchen",
+      "Garage",
+      "Garden"
+    ],
+    "image": "https://i.postimg.cc/m2qrnmRr/img1.jpg"
+  },
+  {
+    "id": 2,
+    "estate_title": "Downtown Apartment",
+    "segment_name": "Apartment",
+    "description": "Modern apartment located in the heart of downtown, with stunning city views and convenient amenities.",
+    "price": "$1,200/month",
+    "status": "rent",
+    "area": "800 sq ft",
+    "location": "456 Elm Street, Metropolis",
+    "facilities": ["Living Room", "Gym", "Rooftop Access", "Laundry Room"],
+    "image": "https://i.postimg.cc/s2Cgj1Md/img2.jpg"
+  },
+  {
+    "id": 3,
+    "estate_title": "Cozy Townhouse",
+    "segment_name": "Townhouse",
+    "description": "A charming townhouse with a warm interior design, perfect for small families or couples.",
+    "price": "$300,000",
+    "status": "sale",
+    "area": "1500 sq ft",
+    "location": "789 Oak Avenue, Riverside",
+    "facilities": ["Living Room", "Kitchen", "Garage", "Balcony"],
+    "image": "https://i.postimg.cc/yNhYkBRJ/banner3.jpg"
+  },
+  {
+    "id": 4,
+    "estate_title": "Student Housing",
+    "segment_name": "Student Housing",
+    "description": "Affordable housing option close to university, ideal for students with shared living spaces.",
+    "price": "$600/month",
+    "status": "rent",
+    "area": "400 sq ft",
+    "location": "101 Pine Lane, University City",
+    "facilities": ["Living Room", "Study Area", "Kitchen", "Laundry Room"],
+    "image": "https://i.postimg.cc/nzHVm5K3/img4.jpg"
+  },
+  {
+    "id": 5,
+    "estate_title": "Senior Living Community",
+    "segment_name": "Senior Living",
+    "description": "Comfortable living with on-site medical facilities, social activities, and accessible design.",
+    "price": "$2,000/month",
+    "status": "rent",
+    "area": "1000 sq ft",
+    "location": "202 Cedar Road, Pleasantville",
+    "facilities": [
+      "Living Room",
+      "Swimming Pool",
+      "Fitness Center",
+      "Medical Facilities"
+    ],
+    "image": "https://i.postimg.cc/T2N2ytKc/img5.jpg"
+  },
+  {
+    "id": 6,
+    "estate_title": "Beachside Vacation Rental",
+    "segment_name": "Vacation Rental",
+    "description": "Enjoy the ocean breeze in this beautiful vacation rental just steps away from the beach.",
+    "price": "$3,000/week",
+    "status": "rent",
+    "area": "1200 sq ft",
+    "location": "303 Seaside Blvd, Oceanview",
+    "facilities": ["Living Room", "Swimming Pool", "Kitchen", "Beach Access"],
+    "image": "https://i.postimg.cc/dVrJxv4W/img6.jpg"
+  },
+  {
+    "id": 7,
+    "estate_title": "Modern Apartment in the City",
+    "segment_name": "Apartment",
+    "description": "A sleek, modern apartment with all the latest amenities in a prime city location.",
+    "price": "$900/month",
+    "status": "rent",
+    "area": "700 sq ft",
+    "location": "404 Center Street, Metropolis",
+    "facilities": ["Living Room", "Gym", "Parking", "Balcony"],
+    "image": "https://i.postimg.cc/5tmbfgcL/img7.jpg"
+  },
+  {
+    "id": 8,
+    "estate_title": "Suburban Family House",
+    "segment_name": "Single-Family Home",
+    "description": "Spacious house in a quiet suburban area, perfect for families looking for a peaceful neighborhood.",
+    "price": "$450,000",
+    "status": "sale",
+    "area": "2200 sq ft",
+    "location": "505 Birch Drive, Suburbia",
+    "facilities": ["Living Room", "Garage", "Backyard", "Kitchen"],
+    "image": "https://i.postimg.cc/B6Y3Kvnv/img8.jpg"
+  },
+  {
+    "id": 9,
+    "estate_title": "Luxury Condo with City Views",
+    "segment_name": "Condo",
+    "description": "Luxury condo offering breathtaking city views, high-end finishes, and exclusive amenities.",
+    "price": "$700,000",
+    "status": "sale",
+    "area": "1300 sq ft",
+    "location": "606 Skyline Drive, Uptown",
+    "facilities": ["Living Room", "Gym", "Swimming Pool", "Concierge Service"],
+    "image": "https://i.postimg.cc/90DhtjDY/img9.jpg"
+  },
+  {
+    "id": 10,
+    "estate_title": "Rural Cottage Retreat",
+    "segment_name": "Cottage",
+    "description": "Charming rural cottage, perfect for a peaceful retreat away from the hustle and bustle of the city.",
+    "price": "$200,000",
+    "status": "sale",
+    "area": "1200 sq ft",
+    "location": "707 Country Road, Countryside",
+    "facilities": ["Living Room", "Garden", "Fireplace", "Kitchen"],
+    "image": "https://i.postimg.cc/RCY9CqYs/img10.jpg"
+  }
+]
