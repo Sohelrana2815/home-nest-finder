@@ -1,13 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut().then().catch();
+  };
   const navLinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
       </li>
     </>
   );
@@ -39,7 +42,9 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-3xl font-outfit">Home Nest Finder</a>
+          <a className="btn btn-ghost lg:text-3xl text-xl font-outfit">
+            Home Nest Finder
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -49,12 +54,12 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar tooltip "
+              className="avatar tooltip"
               data-tip="SohelRana"
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
+                  alt="Profile"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
                 />
               </div>
@@ -64,13 +69,32 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>User settings</a>
+                <a className="hover:bg-black hover:text-white">User settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                {user ? (
+                  <button
+                    onClick={handleLogOut}
+                    className="hover:bg-black hover:text-white"
+                  >
+                    Sign out
+                  </button>
+                ) : (
+                  <Link to="/login" className="hover:bg-black hover:text-white">
+                    Login
+                  </Link>
+                )}
               </li>
             </ul>
           </div>
+          <Link to="/login" className="ml-2">
+            <button
+              className="hidden lg:inline-block bg-black text-white py-2 px-4 rounded-xl
+           hover:bg-gray-800 mb-1"
+            >
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     </>
