@@ -4,7 +4,10 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
       </li>
     </>
   );
@@ -46,7 +49,8 @@ const Navbar = () => {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle avatar tooltip "
+              data-tip="SohelRana"
             >
               <div className="w-10 rounded-full">
                 <img

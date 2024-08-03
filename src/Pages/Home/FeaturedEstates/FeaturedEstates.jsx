@@ -9,11 +9,13 @@ const FeaturedEstates = () => {
       .catch((error) => console.error("Error loading data: ", error));
   }, []);
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-36">
-      {limitedEstates.map((estate) => (
-        <EstateCard key={estate.id} estate={estate} />
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-4 mt-36">
+        {limitedEstates.map((estate) => (
+          <EstateCard key={estate.id} estate={estate} />
+        ))}
+      </div>
+    </>
   );
 };
 
