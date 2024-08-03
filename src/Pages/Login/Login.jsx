@@ -36,20 +36,17 @@ const Login = () => {
             </label>
             <input
               type="password"
-              {...register(
-                "password",
-                {
-                  minLength: {
-                    value: 6,
-                    message: "Password must be at least 6 characters",
-                  },
-                  maxLength: {
-                    value: 16,
-                    message: "Password cannot exceed 16 characters",
-                  },
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
                 },
-                { required: "Password is required" }
-              )}
+                maxLength: {
+                  value: 16,
+                  message: "Password cannot exceed 16 characters",
+                },
+              })}
               className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
               placeholder="Enter your password"
             />
