@@ -52,19 +52,20 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="avatar tooltip"
-              data-tip="SohelRana"
-            >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Profile"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                />
+            {user && (
+              <div
+                tabIndex={0}
+                role="button"
+                className="avatar tooltip"
+                data-tip={user.displayName}
+              >
+                <div className="w-10 rounded-full">
+                  <img alt="Profile" src={user.photoURL} />
+                </div>
               </div>
-            </div>
+            )}
+
+            {/*  */}
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -88,14 +89,25 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link to="/login" className="ml-2">
+          {user ? (
             <button
-              className="hidden lg:inline-block bg-black text-white py-2 px-4 rounded-xl
-           hover:bg-gray-800 mb-1"
+              onClick={handleLogOut}
+              className="hidden lg:inline-block  bg-black text-white 
+                  py-2 px-2  rounded-xl
+                hover:bg-gray-800 mb-1 ml-2"
             >
-              Login
+              Sign out
             </button>
-          </Link>
+          ) : (
+            <Link to="/login" className="ml-2">
+              <button
+                className="hidden lg:inline-block bg-black text-white py-2 px-4 rounded-xl
+           hover:bg-gray-800 mb-1"
+              >
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </>
