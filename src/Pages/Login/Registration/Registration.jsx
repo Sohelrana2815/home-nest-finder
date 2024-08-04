@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const {
     handleSubmit,
@@ -16,6 +21,7 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate("/login");
         // Handle post-registration logic like redirecting the user, etc.
       })
       .catch((error) => {
