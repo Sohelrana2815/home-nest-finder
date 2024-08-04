@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
+import profileImg from "../../../assets/ProfileImg/profile.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -61,9 +62,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Profile"
-                  src={
-                    user ? user.photoURL : "/src/assets/ProfileImg/profile.png"
-                  }
+                  src={user ? user.photoURL : { profileImg }}
                 />
               </div>
             </div>

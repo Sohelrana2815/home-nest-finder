@@ -4,6 +4,7 @@ import Root from "../Layouts/Root";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Login/Registration/Registration";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration />,
+      },
+      {
+        path: "/property/:id",
+        element: <PropertyDetails />,
+        loader: () => fetch("/estatesData.json"),
       },
     ],
   },

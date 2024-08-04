@@ -1,7 +1,8 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const EstateCard = ({ estate }) => {
-  const { estate_title, location, price, status, image } = estate;
+  const { estate_title, location, price, status, image, id } = estate;
 
   return (
     <>
@@ -26,12 +27,11 @@ const EstateCard = ({ estate }) => {
             <p className="text-sm md:text-base">{location}</p>
           </div>
           <div className="mt-4">
-            <button
-              className="bg-black  text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300"
-              onClick={() => alert("View Property clicked")}
-            >
-              View Property
-            </button>
+            <Link to={`/property/${id}`}>
+              <button className="bg-black  text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300">
+                View Property
+              </button>
+            </Link>
           </div>
         </div>
       </div>
