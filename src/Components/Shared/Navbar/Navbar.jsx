@@ -52,19 +52,21 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            {user && (
-              <div
-                tabIndex={0}
-                role="button"
-                className="avatar tooltip"
-                data-tip={user.displayName}
-              >
-                <div className="w-10 rounded-full">
-                  <img alt="Profile" src={user.photoURL} />
-                </div>
+            <div
+              tabIndex={0}
+              role="button"
+              className="avatar tooltip"
+              data-tip={user ? user.displayName : ""}
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Profile"
+                  src={
+                    user ? user.photoURL : "/src/assets/ProfileImg/profile.png"
+                  }
+                />
               </div>
-            )}
-
+            </div>
             {/*  */}
             <ul
               tabIndex={0}
