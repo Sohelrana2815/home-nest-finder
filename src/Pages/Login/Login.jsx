@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const { signInUser, googleSignIng, githubSignIn } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log("location in the state", location);
 
   const {
     handleSubmit,
@@ -17,6 +20,7 @@ const Login = () => {
     googleSignIng()
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log("Error in google login method", error);
@@ -27,6 +31,7 @@ const Login = () => {
     githubSignIn()
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log("Error in google login method", error);
@@ -38,6 +43,7 @@ const Login = () => {
     signInUser(email, password)
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);

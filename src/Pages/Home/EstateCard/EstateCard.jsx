@@ -27,7 +27,7 @@ const EstateCard = ({ estate }) => {
             <p className="text-sm md:text-base">{location}</p>
           </div>
           <div className="mt-4">
-            <Link to={`/property/${id}`}>
+            <Link to={`/estate/${id}`}>
               <button className="bg-black  text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition duration-300">
                 View Property
               </button>
