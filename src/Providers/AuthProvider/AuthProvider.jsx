@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   createUserWithEmailAndPassword,
   GithubAuthProvider,
@@ -68,5 +69,7 @@ const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
 };
-
+AuthProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 export default AuthProvider;

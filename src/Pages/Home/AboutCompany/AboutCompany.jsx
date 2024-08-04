@@ -42,6 +42,7 @@ const AboutCompany = () => {
             </h2>
           </div>
         </div>
+        
       </div>
     </>
   );
