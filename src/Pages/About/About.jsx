@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import TextComponent from "../Home/TextComponent/TextComponent";
 import textData from "../Home/TextData/TextData";
 
 const About = () => {
   return (
     <>
+      <Helmet>
+        <title>About | Home Nest Finder</title>
+      </Helmet>
       <div className="flex">
         <p className="text-5xl font-bold w-1/2">
           <TextComponent text={textData.about} />

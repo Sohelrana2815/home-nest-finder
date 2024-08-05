@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import AboutCompany from "../AboutCompany/AboutCompany";
 import Banner from "../Banner/Banner";
 import FeaturedEstates from "../FeaturedEstates/FeaturedEstates";
@@ -8,6 +9,9 @@ import textData from "../TextData/TextData";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Home page | Home Nest Finder</title>
+      </Helmet>
       <Banner />
       <AboutCompany />
       <ReactMarquee />
