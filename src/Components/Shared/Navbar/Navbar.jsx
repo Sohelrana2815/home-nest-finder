@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
-import profileImg from "../../../assets/ProfileImg/profile.png";
+import profile from "../../../assets/ProfileImg/profile.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -63,10 +63,7 @@ const Navbar = () => {
               data-tip={user ? user.displayName : ""}
             >
               <div className="w-10 rounded-full">
-                <img
-                  alt="Profile"
-                  src={user ? user.photoURL : { profileImg }}
-                />
+                <img alt="profile" src={user ? user.photoURL : profile} />
               </div>
             </div>
             {/*  */}

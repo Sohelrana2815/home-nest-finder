@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 const Login = () => {
   const { signInUser, googleSignIng, githubSignIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   console.log("location in the state", location);
@@ -55,6 +56,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        setErrorMessage(error.message);
       });
     console.log(data);
   };
@@ -105,11 +107,16 @@ const Login = () => {
               <div className="relative">
                 <span
                   onClick={handlePassVisibility}
-                  className="absolute right-0 bottom-[9px] cursor-pointer text-xl  mr-4"
+                  className="absolute right-2 bottom-2 cursor-pointer text-xl sm:text-lg md:text-xl lg:text-xl mr-4"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
+              {errorMessage && (
+                <div className="text-red-500 font-bold text-center ">
+                  {errorMessage}
+                </div>
+              )}
               {errors.password && (
                 <span className="text-red-600">{errors.password.message}</span>
               )}
