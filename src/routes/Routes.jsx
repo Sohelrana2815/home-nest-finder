@@ -7,6 +7,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PropertyDetails from "../Pages/PropertyDetails/PropertyDetails";
 import PrivateRoute from "./PrivateRoute";
 import About from "../Pages/About/About";
+import Verify from "../Pages/Verify/Verify";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
             <About />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/verify",
+        element: <Verify />,
       },
     ],
   },

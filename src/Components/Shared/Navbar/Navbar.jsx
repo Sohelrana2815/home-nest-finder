@@ -60,10 +60,13 @@ const Navbar = () => {
               tabIndex={0}
               role="button"
               className="avatar tooltip"
-              data-tip={user ? user.displayName : ""}
+              data-tip={user ? user?.displayName || user?.email : ""}
             >
               <div className="w-10 rounded-full">
-                <img alt="profile" src={user ? user.photoURL : profile} />
+                <img
+                  alt="profile"
+                  src={user ? user.photoURL || profile : profile}
+                />
               </div>
             </div>
             {/*  */}

@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { sendEmailVerification } from "firebase/auth";
 
 const Registration = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logOut } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,16 +20,19 @@ const Registration = () => {
   const onSubmit = (data) => {
     const { email, password } = data; // Destructure email and password from data
 
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        navigate("/login");
-        // Handle post-registration logic like redirecting the user, etc.
-      })
-      .catch((error) => {
-        console.log(error);
-        // Handle errors, like displaying an error message to the user
-      });
+    createUser(email, password).then((result) => {
+      return sendEmailVerification(result.user)
+        .then(() => {
+          alert("Verification email sent! Please check your inbox.");
+          return logOut().then(() => {});
+        })
+        .then(() => {
+          navigate("/verify"); // Redirect to a verification page
+        })
+        .catch((error) => {
+          console.error("Error", error);
+        });
+    });
 
     console.log(data); // This will log the entire form data
   };

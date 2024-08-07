@@ -27,6 +27,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("Error in google login method", error);
+        handleError(error);
       });
   };
 
@@ -38,6 +39,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log("Error in google login method", error);
+        handleError(error);
       });
   };
 
@@ -56,9 +58,25 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        setErrorMessage(error.message);
+        handleError(error);
       });
     console.log(data);
+  };
+
+  const handleError = (error) => {
+    switch (error.code) {
+      case "auth/user-not-found":
+        setErrorMessage("User not found. Please register first.");
+        break;
+      case "auth/wrong-password":
+        setErrorMessage("Incorrect password. Please try again.");
+        break;
+      case "auth/invalid-email":
+        setErrorMessage("Invalid email address. Please check and try again.");
+        break;
+      default:
+        setErrorMessage("Login failed. Please try again.");
+    }
   };
 
   return (
@@ -112,6 +130,7 @@ const Login = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
+              {/* Handle Error */}
               {errorMessage && (
                 <div className="text-red-500 font-bold text-center ">
                   {errorMessage}

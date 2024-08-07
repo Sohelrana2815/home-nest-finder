@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../../firebase.config";
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext(null);
 
@@ -18,7 +19,6 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
-
   const githubProvider = new GithubAuthProvider();
 
   const googleSignIng = () => {
@@ -35,6 +35,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -47,8 +48,22 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("User on the auth state changed", currentUser);
-      setUser(currentUser);
+      if (currentUser) {
+        if (currentUser.emailVerified) {
+          setUser(currentUser);
+          setLoading(false);
+        } else {
+          setUser(null); // Ensure unverified users are logged out
+          Swal.fire({
+            title: "Email Verification Required",
+            text: "Please verify your email address.",
+            icon: "warning",
+            confirmButtonText: "Ok",
+          });
+        }
+      } else {
+        setUser(null);
+      }
       setLoading(false);
     });
     return () => {
