@@ -1,40 +1,39 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { sendEmailVerification } from "firebase/auth";
 
 const Registration = () => {
   const { createUser, logOut } = useContext(AuthContext);
-
-  const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    const { email, password } = data; // Destructure email and password from data
+    const { email, password } = data;
 
-    createUser(email, password).then((result) => {
-      return sendEmailVerification(result.user)
-        .then(() => {
-          alert("Verification email sent! Please check your inbox.");
-          return logOut().then(() => {});
-        })
-        .then(() => {
-          navigate("/verify"); // Redirect to a verification page
-        })
-        .catch((error) => {
-          console.error("Error", error);
-        });
-    });
+    createUser(email, password)
+      .then((result) => {
+        return sendEmailVerification(result.user);
+      })
+      .then(() => {
+        alert("Verification email sent! Please check your inbox.");
+        return logOut(); // Log out after sending verification email
+      })
+      .then(() => {
+        navigate("/verify"); // Redirect to a verification page
+      })
+      .catch((error) => {
+        console.error("Error:", error.message); // Improved error logging
+      });
 
-    console.log(data); // This will log the entire form data
+    console.log(data); // Log form data
   };
 
   return (
@@ -72,13 +71,13 @@ const Registration = () => {
                 Email
               </label>
               <input
-                {...register("email", { required: true })}
+                {...register("email", { required: "Email is required" })}
                 type="email"
                 className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
                 placeholder="Enter your email"
               />
               {errors.email && (
-                <span className="text-red-600">Email is required</span>
+                <span className="text-red-600">{errors.email.message}</span>
               )}
             </div>
             <div>
@@ -115,13 +114,13 @@ const Registration = () => {
                 Photo URL
               </label>
               <input
-                {...register("photoUrl", { required: true })}
+                {...register("photoUrl", { required: "Photo URL is required" })}
                 type="text"
                 className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring focus:ring-indigo-200"
                 placeholder="Enter your photo URL"
               />
               {errors.photoUrl && (
-                <span className="text-red-600">Photo Url is required</span>
+                <span className="text-red-600">{errors.photoUrl.message}</span>
               )}
             </div>
             <button
