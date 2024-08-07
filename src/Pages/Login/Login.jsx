@@ -11,7 +11,6 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("location in the state", location);
 
   const {
     handleSubmit,
@@ -19,48 +18,36 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const handleGoogleSignIn = () => {
-    googleSignIng()
-      .then((result) => {
-        console.log(result.user);
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.log("Error in google login method", error);
-        handleError(error);
-      });
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await googleSignIng();
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      handleError(error);
+    }
   };
 
-  const handleGithubSignIn = () => {
-    githubSignIn()
-      .then((result) => {
-        console.log(result.user);
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.log("Error in google login method", error);
-        handleError(error);
-      });
+  const handleGithubSignIn = async () => {
+    try {
+      const result = await githubSignIn();
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      handleError(error);
+    }
   };
-
-  //  eyeIcon
 
   const handlePassVisibility = () => {
-    setShowPassword((s) => !s);
+    setShowPassword((prev) => !prev);
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password } = data;
-    signInUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.log(error);
-        handleError(error);
-      });
-    console.log(data);
+    try {
+      const result = await signInUser(email, password);
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      handleError(error);
+    }
   };
 
   const handleError = (error) => {
@@ -82,31 +69,42 @@ const Login = () => {
   return (
     <>
       <Helmet>
-        <title>Login page</title>
+        <title>Login Page</title>
       </Helmet>
       <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 sm:p-6 lg:p-8">
         <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-md shadow-md">
           <h2 className="text-3xl font-bold text-center">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
                 E-mail
               </label>
               <input
+                id="email"
                 type="text"
-                {...register("email", { required: true })}
+                {...register("email", { required: "Email is required" })}
                 className="w-full px-3 py-2 mt-1 border rounded-md"
-                placeholder="Enter your username"
+                placeholder="Enter your email"
+                aria-describedby="email-error"
               />
               {errors.email && (
-                <span className="text-red-600">Email is required</span>
+                <span id="email-error" className="text-red-600">
+                  {errors.email.message}
+                </span>
               )}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <input
+                id="password"
                 type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: "Password is required",
@@ -121,23 +119,25 @@ const Login = () => {
                 })}
                 className="w-full px-3 py-2 mt-1 border rounded-md"
                 placeholder="Enter your password"
+                aria-describedby="password-error"
               />
               <div className="relative">
                 <span
                   onClick={handlePassVisibility}
-                  className="absolute right-2 bottom-2 cursor-pointer text-xl sm:text-lg md:text-xl lg:text-xl mr-4"
+                  className="absolute right-2 bottom-2 cursor-pointer text-xl"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
-              {/* Handle Error */}
               {errorMessage && (
-                <div className="text-red-500 font-bold text-center ">
+                <div className="text-red-500 font-bold text-center">
                   {errorMessage}
                 </div>
               )}
               {errors.password && (
-                <span className="text-red-600">{errors.password.message}</span>
+                <span id="password-error" className="text-red-600">
+                  {errors.password.message}
+                </span>
               )}
             </div>
             <div className="flex items-center justify-between">
